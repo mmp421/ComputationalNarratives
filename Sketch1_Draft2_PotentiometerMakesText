@@ -1,0 +1,104 @@
+//https://projects.haykranen.nl/markov/demo/
+
+#include <SPI.h>
+#include <Wire.h>
+#include <Adafruit_GFX.h>
+#include <Adafruit_SSD1306.h>
+
+Adafruit_SSD1306 display = Adafruit_SSD1306(128, 32, &Wire);
+
+void setup() {
+  Serial.begin(9600);
+
+  // SSD1306_SWITCHCAPVCC = generate display voltage from 3.3V internally
+  display.begin(SSD1306_SWITCHCAPVCC, 0x3C); // Address 0x3C for 128x32
+
+  // Show image buffer on the display hardware.
+  // Since the buffer is intialized with an Adafruit splashscreen
+  // internally, this will display the splashscreen.
+  display.display();
+  delay(2500);
+display.clearDisplay();
+display.display();
+}
+
+void loop(){
+int sensorReading = analogRead(A7);
+  Serial.println(sensorReading);
+
+  delay(800);
+  display.setTextSize(1);
+  display.setTextColor(WHITE);
+  display.setCursor(0, 0);
+  delay(100);
+  display.clearDisplay();  
+
+  if(sensorReading < 20){ 
+    display.println("     Alice in");
+    display.println("    Markov Chains");
+    display.println("         Draft 1");
+    display.display();
+    }
+    
+  else if(sensorReading > 20 && sensorReading < 100){ 
+  display.println("You hurry upstairs ina low trembling");
+  display.println("voice, to your nest.");
+  display.display();
+  }
+
+  else if(sensorReading > 100 && sensorReading < 200){ 
+  display.println("'I won't!' you remarkloudly at the bottle.");
+  display.display();
+  }
+
+  else if(sensorReading > 200 && sensorReading < 300){ 
+  display.println("All on a summer");
+  display.println("day.");
+  display.display();
+  }
+
+    else if(sensorReading > 300 && sensorReading < 400){ 
+  display.println("You run to bring");
+  display.println("tears to yourself.");
+  display.display();
+  }
+
+    else if(sensorReading > 400 && sensorReading < 500){ 
+  display.println("You wonder the door, quite relieved.");
+  display.display();
+  }
+
+  else if(sensorReading > 500 && sensorReading < 600){ 
+  display.println("You creep under the  window and their"); 
+  display.println("hands.");
+  display.display();
+  }
+
+    else if(sensorReading > 600 && sensorReading < 700){ 
+  display.println("You hear the Rabbit  took a watch out of  its mouth.");
+  display.display();
+  }
+
+    else if(sensorReading > 700 && sensorReading < 800){ 
+  display.println("Your eyes fall upon aheap of sticks and   sounds of broken");
+  display.println("glass.");
+  display.display();
+  }
+
+  else if(sensorReading > 800 && sensorReading < 900){ 
+  display.println("You can't explain");
+  display.println("yourself, you're");
+  display.println("afraid.");
+  display.display();
+  }
+
+    else if(sensorReading > 900 && sensorReading < 1000){ 
+  display.println("You look at the same room, eyes falling upon a little scream.");
+  display.display();
+  }
+
+    else if(sensorReading > 1000){ 
+  display.println("You came to the race quite pale.");
+  display.display();
+  }  
+}
