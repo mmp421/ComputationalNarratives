@@ -1,0 +1,98 @@
+//In final project, would use strings to generate random lines of stories for each value. 
+
+#include <SPI.h>
+#include <Wire.h>
+#include <Adafruit_GFX.h>
+#include <Adafruit_SSD1306.h>
+
+Adafruit_SSD1306 display = Adafruit_SSD1306(128, 32, &Wire);
+
+void setup() {
+  Serial.begin(9600);
+
+  // SSD1306_SWITCHCAPVCC = generate display voltage from 3.3V internally
+  display.begin(SSD1306_SWITCHCAPVCC, 0x3C); // Address 0x3C for 128x32
+
+  // Show image buffer on the display hardware.
+  // Since the buffer is intialized with an Adafruit splashscreen
+  // internally, this will display the splashscreen.
+  display.display();
+  delay(2500);
+  display.clearDisplay();
+  display.display();
+}
+
+void loop(){
+  int sensorReading = analogRead(A7);
+  Serial.println(sensorReading);
+
+  delay(800);
+  display.setTextSize(1);
+  display.setTextColor(WHITE);
+  display.setCursor(0, 0);
+  delay(100);
+  display.clearDisplay();  
+
+  if(sensorReading < 20){ 
+    display.println("COMPUTATIONAL");
+    display.println("NARRATIVES");
+    display.println("Sketch 1");
+    display.println(" ");
+    display.display();
+    }
+    
+  else if(sensorReading > 20 && sensorReading < 100){ 
+    display.println("A");
+    display.display();
+    }
+
+  else if(sensorReading > 100 && sensorReading < 200){ 
+    display.println("B");
+    display.display();
+    }
+
+  else if(sensorReading > 200 && sensorReading < 300){ 
+    display.println("C");
+    display.display();
+    }
+
+  else if(sensorReading > 300 && sensorReading < 400){ 
+    display.println("D");
+    display.display();
+    }
+
+  else if(sensorReading > 400 && sensorReading < 500){ 
+    display.println("E");
+    display.display();
+    }
+
+  else if(sensorReading > 500 && sensorReading < 600){ 
+    display.println("F");
+    display.display();
+    }
+
+  else if(sensorReading > 600 && sensorReading < 700){ 
+    display.println("G");
+    display.display();
+    }
+
+  else if(sensorReading > 700 && sensorReading < 800){ 
+    display.println("H");
+    display.display();
+    }
+
+  else if(sensorReading > 800 && sensorReading < 900){ 
+    display.println("I");
+    display.display();
+    }
+
+  else if(sensorReading > 900 && sensorReading < 1000){ 
+    display.println("J");
+    display.display();
+    }
+
+  else if(sensorReading > 1000){ 
+    display.println("K");
+    display.display();
+    }  
+}
