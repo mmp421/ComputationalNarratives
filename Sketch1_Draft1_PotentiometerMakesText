@@ -1,3 +1,6 @@
+//test 
+
+
 //In final project, would use strings to generate random lines of stories for each value. 
 
 #include <SPI.h>
