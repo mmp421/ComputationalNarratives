@@ -1,5 +1,7 @@
 //In final project, would use strings to generate random lines of stories for each value. 
 
+hi from jason
+
 #include <SPI.h>
 #include <Wire.h>
 #include <Adafruit_GFX.h>
